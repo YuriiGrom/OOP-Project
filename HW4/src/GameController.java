@@ -1,32 +1,32 @@
 import java.util.*;
-public class GameController {
+public class GameController implements Subject{
 	
-	public List<Commandable> comList = new ArrayList<Commandable>();
+	public List<Commandable> comList;
 	String userInput;
 	
-	
-	public void getInput() {
+	public GameController () {
 		
-		System.out.println("Enter your command: ");
-		Scanner input = new Scanner (System.in);
-		userInput = input.nextLine();
-		notifyObservers();
-		input.close();
-		
+		comList = new ArrayList<Commandable>();
 	}
 	
-	public void notifyObservers()
-	{
-		for (Commandable observer : comList)
-		{
+	public void register(Commandable o) {
+		comList.add(o);
+	}
+	
+	public void notifyObservers() {
+		for (Commandable observer : comList) {
 			observer.update(userInput);
-		}
+			}
 	}
+	
+	public void getInput(String userInput) {
+		this.userInput = userInput;
+		notifyObservers();
+	}
+	
+	
 
-	public void register(Commandable observer) {
-		// TODO Auto-generated method stub
-		comList.add(observer);
-	}
+	
 	
 	
 	

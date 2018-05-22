@@ -1,8 +1,8 @@
 
 public class HelpCommand implements Commandable {
 	
-	protected GameController newGame;
-	public String Input;
+	private Subject newGame;
+	public String userInput;
 	
 	public HelpCommand (GameController newGame)
 	{
@@ -17,27 +17,28 @@ public class HelpCommand implements Commandable {
 		// TODO Auto-generated method stub
 		System.out.println("Avaliable commands: quit, help");
 		return null;
+
 	}
 
 	@Override
-	public void matchCommand(String input) {
+	public void matchCommand(String userInput) {
 		// TODO Auto-generated method stub
-		if ("help".equals(input))
-		{
+		if ("help".equals(userInput)){
 			doCommand();
 		}
-		else
-		{
+		else if ("quit".equals(userInput)){
+			
+		}
+		else {
 			System.out.println("Command not Recognized. Try again");
-			newGame.getInput();
 		}
 	}
 
 	@Override
 	public void update(String userInput) {
 		// TODO Auto-generated method stub
-		Input = userInput;
-		matchCommand(Input);
+		this.userInput = userInput;
+		matchCommand(userInput);
 	}
 	
 

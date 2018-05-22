@@ -1,8 +1,8 @@
 
 public class QuitCommand implements Commandable{
 	
-	protected GameController newGame;
-	public String Input;
+	protected Subject newGame;
+	public String userInput;
 	
 	
 	public QuitCommand (GameController newGame)
@@ -26,17 +26,16 @@ public class QuitCommand implements Commandable{
 			
 			doCommand();
 		}
-		else 
-		{
-			System.out.println("Command not Recognized. Try again");
+		else if ("help".equals(userInput)){
+			
 		}
 	}
 
 	@Override
 	public void update(String userInput) {
 		// TODO Auto-generated method stub
-		Input = userInput;
-		matchCommand(Input);
+		this.userInput = userInput;
+		matchCommand(userInput);
 	}
 
 }
